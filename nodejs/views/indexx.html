@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>index page</title>
+    </head>
+    <body>
+        <h1>This is index page</h1>
+
+        <p>Name is name is <%= name %></p>
+        <p id="1"></p>
+        <p id="2"></p>
+        <p id="3"></p>
+        <a href="/" id="asd">Back</a>
+        <!-- <button id="asd" onclick="getname()">GET NAME</button> -->
+    
+    <script>
+        console.log("<%= moviedata %>");
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://127.0.0.1:3000/data');
+        xhr.responseType = 'json';
+        xhr.onload = function(e) {
+        if (this.status == 200) {
+            data = this.response;
+            console.log("ddd",data[0].name);
+            console.log('response', this.response); // JSON response  
+            }
+            console.log("ddd",data[0].name);
+            document.getElementById("1").innerHTML = '<h2>'+'First data'+'</h2>' +'name: '+ data[0].name + '<br>' + 'img: '+'<a href="'+data[0].img+'">'+data[0].img+'</a>' + '<br>' + 'summary: '+ data[0].summary;
+            document.getElementById("2").innerHTML = '<h2>'+'Second data'+'</h2>' +'name: '+ data[1].name + '<br>' + 'img: '+'<a href="'+data[1].img+'">'+data[1].img+'</a>' + '<br>' + 'summary: '+ data[1].summary;
+            document.getElementById("3").innerHTML = '<h2>'+'Third data'+'</h2>' +'name: '+ data[2].name + '<br>' + 'img: '+'<a href="'+data[2].img+'">'+data[2].img+'</a>' + '<br>' + 'summary: '+ data[2].summary;
+        };
+        xhr.send();
+    //     Request.open("http://127.0.0.1:3000/data", (error, response, body) => {
+    //     if(error) {
+    //     return console.dir(error);
+    //     }
+    //     console.log(JSON.parse(body));
+    // });
+        // var obj ='<%= name %>';
+        // var img1 ='<%= img1 %>';
+        // var img2 ='<%= img2 %>';
+        // var img3 ='<%= img3 %>';
+        // var obj3 ='<%= summ %>';
+        // // console.log(obj.name);
+        // document.getElementById("asda").innerHTML =  '<a href="'+img1+'">'+img1+'</a>'+'<br>'+'<a href="'+img2+'">'+img2+'</a>';
+        // function getname(){
+        //     document.getElementById("asda").innerHTML = obj
+        // }
+
+    </script>
+    </body>
+</html> 
